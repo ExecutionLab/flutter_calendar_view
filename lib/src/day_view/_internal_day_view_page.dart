@@ -163,6 +163,7 @@ class InternalDayViewPage<T extends Object?> extends StatelessWidget {
   Widget build(BuildContext context) {
     final fullDayEventList = controller.getFullDayEvent(date);
     return Container(
+      padding: EdgeInsets.only(right: 24),
       height: height,
       width: width,
       child: Column(
