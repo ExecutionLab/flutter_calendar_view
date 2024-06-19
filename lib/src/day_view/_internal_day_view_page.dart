@@ -121,6 +121,8 @@ class InternalDayViewPage<T extends Object?> extends StatelessWidget {
   /// Emulate vertical line offset from hour line starts.
   final double emulateVerticalOffsetBy;
 
+  final ScrollPhysics scrollPhysics;
+
   /// Defines a single day page.
   const InternalDayViewPage({
     Key? key,
@@ -157,6 +159,7 @@ class InternalDayViewPage<T extends Object?> extends StatelessWidget {
     required this.quarterHourIndicatorSettings,
     required this.emulateVerticalOffsetBy,
     required this.onTileDoubleTap,
+    required this.scrollPhysics,
   }) : super(key: key);
 
   @override
@@ -171,6 +174,7 @@ class InternalDayViewPage<T extends Object?> extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               controller: scrollController,
+              physics: scrollPhysics,
               child: Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: SizedBox(

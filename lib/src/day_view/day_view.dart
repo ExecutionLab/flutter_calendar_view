@@ -486,6 +486,8 @@ class DayViewState<T extends Object?> extends State<DayView<T>> {
                                 _quarterHourIndicatorSettings,
                             emulateVerticalOffsetBy:
                                 widget.emulateVerticalOffsetBy,
+                            scrollPhysics:
+                                widget.scrollPhysics ?? ScrollPhysics(),
                           ),
                         );
                       },
