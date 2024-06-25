@@ -522,6 +522,8 @@ class DayViewState<T extends Object?> extends State<DayView<T>> {
                             showEndHours: widget.showEndHours,
                             showStartHours: widget.showStartHours,
                             pagePadding: _pagePadding,
+                            scrollPhysics:
+                                widget.scrollPhysics ?? ScrollPhysics(),
                           ),
                         );
                       },

@@ -143,6 +143,9 @@ class InternalDayViewPage<T extends Object?> extends StatefulWidget {
   ///
   final EdgeInsets pagePadding;
 
+  ///
+  final ScrollPhysics scrollPhysics;
+
   /// Defines a single day page.
   const InternalDayViewPage({
     Key? key,
@@ -186,6 +189,7 @@ class InternalDayViewPage<T extends Object?> extends StatefulWidget {
     required this.showEndHours,
     required this.showStartHours,
     required this.pagePadding,
+    required this.scrollPhysics,
   }) : super(key: key);
 
   @override
@@ -219,20 +223,18 @@ class _InternalDayViewPageState<T extends Object?>
 
   @override
   Widget build(BuildContext context) {
-    final fullDayEventList = widget.controller.getFullDayEvent(widget.date);
     return Column(
       children: [
-        fullDayEventList.isEmpty
-            ? SizedBox.shrink()
-            : widget.fullDayEventBuilder(
-                widget.controller.getFullDayEvent(widget.date),
-                widget.date,
-              ),
+        widget.fullDayEventBuilder(
+          widget.controller.getFullDayEvent(widget.date),
+          widget.date,
+        ),
         Expanded(
           child: SingleChildScrollView(
             controller: widget.keepScrollOffset
                 ? scrollController
                 : widget.dayViewScrollController,
+            physics: widget.scrollPhysics,
             child: SizedBox(
               height: widget.height,
               width: widget.width,
